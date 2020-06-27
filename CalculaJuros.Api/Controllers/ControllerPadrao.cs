@@ -18,7 +18,12 @@ namespace CalculaJuros.Api.Controllers
         protected OkObjectResult RetornoSucesso<E>(E resposta)
         {
             return Ok(resposta);
-        }        
+        }
+
+        protected CreatedResult CriadoSucesso<E>(E resposta)
+        {
+            return Created(string.Empty, resposta);
+        }
 
         protected BadRequestObjectResult RetornoErro(Exception ex, string mensagemErro)
         {

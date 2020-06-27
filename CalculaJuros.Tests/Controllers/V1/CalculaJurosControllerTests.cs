@@ -42,17 +42,17 @@ namespace CalculaJuros.Tests.Controllers.V1
 
         [Test]
         public async Task Calcular_jutos_composto_com_sucesso()
-        {            
+        {
             var resultadoEsperado = new ResultadoCalculo(_valorFinalEsperado);
             _calculaJurosServico.Setup(s => s.Calcular(_entrada))
                 .ReturnsAsync(resultadoEsperado);
 
-            var retorno = await _calculaJurosController.Get(_entrada);
-            var resultadoOk = retorno as OkObjectResult;
+            var retorno = await _calculaJurosController.Post(_entrada);
+            var resultadoCreated = retorno as CreatedResult;
 
             retorno.Should().NotBeNull();
-            resultadoOk.StatusCode.Should().Be((int)HttpStatusCode.OK);
-            resultadoOk.Value.Should().BeEquivalentTo(resultadoEsperado);
+            resultadoCreated.StatusCode.Should().Be((int)HttpStatusCode.Created);
+            resultadoCreated.Value.Should().BeEquivalentTo(resultadoEsperado);
             _calculaJurosServico.Verify();
         }
 
@@ -65,7 +65,7 @@ namespace CalculaJuros.Tests.Controllers.V1
                 .ThrowsAsync(excecao);
             var respostaEsperada = new RespostaErro(mensagemEsperada);
 
-            var retorno = await _calculaJurosController.Get(_entrada);
+            var retorno = await _calculaJurosController.Post(_entrada);
             var resultadoBadRequest = retorno as BadRequestObjectResult;
 
             retorno.Should().NotBeNull();

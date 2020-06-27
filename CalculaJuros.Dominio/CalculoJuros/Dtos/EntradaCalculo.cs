@@ -8,6 +8,8 @@ namespace CalculaJuros.Dominio.CalculoJuros.Dtos
         public decimal ValorInicial { get; set; }
         public int Meses { get; set; }
 
+        public EntradaCalculo() { }
+
         public EntradaCalculo(decimal valorInicial, int meses)
         {
             ValorInicial = valorInicial;
