@@ -2,7 +2,7 @@
 
 API que calcula juros compostos
 
-* Azure App Service: https://api-calcula-juros.azurewebsites.net/swagger/index.html
+* Azure App Service: https://api-calculo-juros.azurewebsites.net/swagger/index.html
 
 ### comandos Docker ###
 
