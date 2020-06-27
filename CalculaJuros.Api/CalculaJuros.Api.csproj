@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>b030f102-9736-4b2a-ba39-45800f178aa3</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/31d812de-51db-4c98-a3c1-b364523ba3f3/resourceGroups/api-calculo-juros/providers/microsoft.insights/components/api-calculo-juros</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />

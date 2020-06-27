@@ -1,4 +1,4 @@
-﻿namespace CalculaJuros.Dominio.RepositoriosGit
+﻿namespace CalculaJuros.Dominio.RepositoriosGit.Dtos
 {
     public class RepositorioGit
     {

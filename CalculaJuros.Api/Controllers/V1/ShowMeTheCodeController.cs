@@ -1,5 +1,5 @@
 ﻿using CalculaJuros.Dominio.Configuracoes;
-using CalculaJuros.Dominio.RepositoriosGit;
+using CalculaJuros.Dominio.RepositoriosGit.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,13 +10,13 @@ namespace CalculaJuros.Api.Controllers.V1
     [Route("api/v{version:apiVersion}/showmethecode")]
     public class ShowMeTheCodeController : ControllerPadrao<ShowMeTheCodeController>
     {
-        private readonly RepositorioGit _repositoriosGit;
+        private readonly IRepositorioGitServico _repositorioGitServico;
 
         public ShowMeTheCodeController(ILogger<ShowMeTheCodeController> logger,
-                                       RepositorioGit repositoriosGit)
+                                       IRepositorioGitServico repositorioGitServico)
             : base(logger)
         {
-            _repositoriosGit = repositoriosGit;
+            _repositorioGitServico = repositorioGitServico;
         }
 
         [HttpGet]
@@ -24,7 +24,8 @@ namespace CalculaJuros.Api.Controllers.V1
         {
             try
             {
-                return RetornoSucesso(_repositoriosGit);
+                var resposta = _repositorioGitServico.ObterLinks();
+                return RetornoSucesso(resposta);
             }
             catch (Exception ex)
             {

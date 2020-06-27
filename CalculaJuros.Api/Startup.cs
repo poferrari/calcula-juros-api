@@ -10,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using System;
 using System.Text.Json;
 
 namespace CalculaJuros.Api
@@ -27,6 +26,7 @@ namespace CalculaJuros.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddResponseCompression();
+            services.AddMemoryCache();
 
             services.AddControllersWithViews().AddJsonOptions(options =>
             {
@@ -57,6 +57,7 @@ namespace CalculaJuros.Api
             services.AddHealthChecks();
 
             services.ConfigurarContainer(Configuration);
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
 
