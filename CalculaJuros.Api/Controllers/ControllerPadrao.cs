@@ -20,6 +20,11 @@ namespace CalculaJuros.Api.Controllers
             return Ok(resposta);
         }
 
+        protected CreatedResult CriadoSucesso<E>(E resposta)
+        {
+            return Created(string.Empty, resposta);
+        }
+
         protected BadRequestObjectResult RetornoErro(Exception ex, string mensagemErro)
         {
             _logger.LogError(ex, mensagemErro);

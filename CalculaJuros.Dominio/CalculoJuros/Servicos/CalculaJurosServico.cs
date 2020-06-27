@@ -13,11 +13,12 @@ namespace CalculaJuros.Dominio.CalculoJuros.Servicos
             _taxaJurosServico = taxaJurosServico;
         }
 
-        public async Task<decimal> Calcular(EntradaCalculo entrada)
+        public async Task<ResultadoCalculo> Calcular(EntradaCalculo entrada)
         {
             var taxaDeJuros = await _taxaJurosServico.ObterTaxa();
+            var valorFinal = entrada.CalcularJurosCompostos(taxaDeJuros);
 
-            return entrada.CalcularJurosCompostos(taxaDeJuros);
+            return new ResultadoCalculo(valorFinal);
         }
     }
 }

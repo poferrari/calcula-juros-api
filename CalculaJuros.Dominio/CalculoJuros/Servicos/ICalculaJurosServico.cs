@@ -5,6 +5,6 @@ namespace CalculaJuros.Dominio.CalculoJuros.Servicos
 {
     public interface ICalculaJurosServico
     {
-        Task<decimal> Calcular(EntradaCalculo entrada);
+        Task<ResultadoCalculo> Calcular(EntradaCalculo entrada);
     }
 }
