@@ -21,13 +21,13 @@ namespace CalculaJuros.Api.Controllers.V1
             _calculaJurosServico = calculaJurosServico;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromQuery] EntradaCalculo entrada)
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] EntradaCalculo entrada)
         {
             try
             {
                 var resultado = await _calculaJurosServico.Calcular(entrada);
-                return CriadoSucesso(resultado);
+                return RetornoSucesso(resultado);
             }
             catch (Exception ex)
             {
